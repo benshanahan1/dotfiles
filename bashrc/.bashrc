@@ -285,7 +285,7 @@ export PS1="\[\e[37m\]\u@\h \w \[\e[1;31m\]$\[\e[0m\] "
 
 # Source .bashrc.local file (at ~/.bashrc.local). This is useful if you want to
 # have custom aliases or functions that are not shared between computers.
-BASHRC_LOCAL="~/.bashrc.local"
+BASHRC_LOCAL=~/.bashrc.local
 if [ -f "$BASHRC_LOCAL" ]; then
     source "$BASHRC_LOCAL"
 fi
