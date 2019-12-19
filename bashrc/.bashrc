@@ -129,6 +129,7 @@ alias resource="source ~/.bashrc"
 alias vimrc="vim ~/.vimrc"
 alias bashrc="vim ~/.bashrc"
 alias cp="rsync -avz"
+alias cl="clear"
 
 # Toggle maximum size for current terminal window
 alias maxwin="wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz"
