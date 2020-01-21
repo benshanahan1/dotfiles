@@ -26,6 +26,7 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 
