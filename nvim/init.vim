@@ -27,6 +27,13 @@ Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'leafgarland/typescript-vim'
+" To properly install semshi, install Neovim Python3 support
+"     sudo pip3 install pynvim --upgrade
+" Then install the plugin:
+"     :PlugInstall
+"     :UpdateRemotePlugins
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 
@@ -109,3 +116,8 @@ autocmd FileType javascript setlocal tabstop=2 softtabstop=0 expandtab shiftwidt
 " directory of the current file, in the current directory, and up and up until
 " the $HOME directory, stopping on the first hit.
 set tags=./tags,.tags;$HOME
+
+
+"" Configure Jedi-Vim for Python
+let g:jedi#show_function_definition = 0
+let g:jedi#popup_on_dot = 0
