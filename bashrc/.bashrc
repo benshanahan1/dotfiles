@@ -128,7 +128,7 @@ alias new="gnome-terminal"  # open new terminal
 alias resource="source ~/.bashrc"
 alias vimrc="vim ~/.vimrc"
 alias bashrc="vim ~/.bashrc"
-alias cp="rsync -avz"
+# alias cp="rsync -avz"
 alias cl="clear"
 
 # Toggle maximum size for current terminal window
@@ -176,6 +176,7 @@ alias ggc='git commit -m '
 alias ggco='git checkout '
 alias ggd='git diff '
 alias ggs='git status '
+alias ggl='git log '
 
 # Open repo remote URL in browser.
 function openrepo {
