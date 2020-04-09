@@ -153,6 +153,12 @@ alias lsusers="cut -d: -f1 /etc/passwd"
 alias mkenv="virtualenv -p python3 env && source env/bin/activate"
 alias activate="source env/bin/activate"
 
+# Docker
+alias dcps="docker-compose ps "
+alias dcup="docker-compose up -d "
+alias dcstop="docker-compose stop "
+alias dcrestart="docker-compose restart "
+
 ###############################################################################
 ## Git-related aliases and functions.
 ###############################################################################
