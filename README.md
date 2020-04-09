@@ -3,6 +3,8 @@ My dotfiles.
 
 **NOTE:** install as the user that will be using the dotfiles, do not use `sudo`.
 
+**NOTE 2:** dotfiles repo should be cloned to /home/$(USER)/dotfiles directory.
+
 ## Requirements
 * neovim
 * tmux
