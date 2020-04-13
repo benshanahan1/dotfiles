@@ -1,8 +1,25 @@
 """ VIM configuration file.
-" This file assumes that you use neovim (https://neovim.io/).
+" This file assumes that you use neovim (https://neovim.io/) and vim-plug
+" (https://github.com/junegunn/vim-plug).
 " 
 " It lives at '~/.config/nvim/init.vim'. For convenience, you may want to
 " create a symlink: `ln -sf ~/.config/nvim/init.vim ~/.vimrc`
+"
+" One of the plugins, semshi, requires Python3 support. You can set up python
+" support like so:
+"
+"       VENV_DIR=/home/ben/.local/share/nvim/venvs/
+"       mkdir -p $VENV_DIR
+"       cd $VENV_DIR
+"       virtualenv -p python2 venv2
+"       source venv2/bin/activate
+"       pip install neovim
+"       virtualenv -p python3 venv3
+"       source venv3/bin/activate
+"       pip install neovim pynvim
+"
+"  NOTE: if you use a different path for $VENV_DIR, be sure to update the
+"  paths below accordingly.
 
 "" Plugin manager.
 "
@@ -10,6 +27,7 @@
 "
 " To install plugins: `:PlugInstall`
 " To update plugins: `:PlugUpdate`
+" To clean up after removing a plugin: `:PlugClean`
 
 call plug#begin('~/.config/nvim/plugins')
 Plug 'tpope/vim-sensible'
@@ -27,17 +45,15 @@ Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'leafgarland/typescript-vim'
-" To properly install semshi, install Neovim Python3 support
-"     sudo pip3 install pynvim --upgrade
-" Then install the plugin:
-"     :PlugInstall
-"     :UpdateRemotePlugins
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 
 "" General config
+" Enable Python 2/3 support.
+let g:python_host_prog = '/home/ben/.local/share/nvim/venvs/venv2/bin/python'
+let g:python3_host_prog = '/home/ben/.local/share/nvim/venvs/venv3/bin/python'
+
 " Tabs are 4 space characters and are entered with tab key
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 
@@ -116,8 +132,3 @@ autocmd FileType javascript setlocal tabstop=2 softtabstop=0 expandtab shiftwidt
 " directory of the current file, in the current directory, and up and up until
 " the $HOME directory, stopping on the first hit.
 set tags=./tags,.tags;$HOME
-
-
-"" Configure Jedi-Vim for Python
-let g:jedi#show_function_definition = 0
-let g:jedi#popup_on_dot = 0
