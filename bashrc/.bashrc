@@ -158,6 +158,8 @@ alias dcps="docker-compose ps "
 alias dcup="docker-compose up -d "
 alias dcstop="docker-compose stop "
 alias dcrestart="docker-compose restart "
+alias dcdown="docker-compose down "
+alias dcbuild="docker-compose build "
 
 ###############################################################################
 ## Git-related aliases and functions.
