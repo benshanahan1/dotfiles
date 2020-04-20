@@ -19,8 +19,12 @@
 "       pip install neovim pynvim
 "       pip install --upgrade git+https://github.com/psf/black.git
 "
-"  NOTE: if you use a different path for $VENV_DIR, be sure to update the
-"  paths below accordingly.
+" You must also have Node.js / NPM installed. See:
+"     https://github.com/nodesource/distributions/blob/master/README.md#deb
+" Once you've got NPM installed, install `prettier`: `sudo npm i -g prettier`
+"
+" NOTE: if you use a different path for $VENV_DIR, be sure to update the paths
+"       below accordingly.
 
 "" Plugin manager.
 "
