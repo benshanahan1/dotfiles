@@ -64,3 +64,12 @@ i-bashrc:
 r-bashrc:
 	@echo "=== REMOVE bashrc dotfiles ==="
 	rm "$(HOME)/.bashrc"
+
+# flake8
+i-flake8:
+	@echo "=== INSTALL flake8 dotfiles ==="
+	ln -sfv "$(REPO)/flake8/flake8" "$(HOME)/.config/flake8"
+
+r-flake8:
+	@echo "=== REMOVE flake8 dotfiles ==="
+	rm "$(HOME)/.config/flake8"
