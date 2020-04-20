@@ -120,7 +120,6 @@ fi
 # NOTE: spaces after the command force what follows to expand (if it has an alias)
 alias sudo="sudo "
 alias vim="nvim "
-alias cat="bat "
 alias hex="hexyl "
 alias apt="apt-fast "
 alias calc="gnome-calculator"
