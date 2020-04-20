@@ -17,6 +17,7 @@
 "       virtualenv -p python3 venv3
 "       source venv3/bin/activate
 "       pip install neovim pynvim
+"       pip install --upgrade git+https://github.com/psf/black.git
 "
 "  NOTE: if you use a different path for $VENV_DIR, be sure to update the
 "  paths below accordingly.
@@ -46,6 +47,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'leafgarland/typescript-vim'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'psf/black'
+Plug 'prettier/vim-prettier', {'do': 'npm install' }
 call plug#end()
 
 
@@ -121,11 +124,13 @@ let g:ale_sign_warning = '.'
 let g:ale_lint_on_enter = 0
 nmap <silent> <leader>ae :ALENext<cr>
 nmap <silent> <leader>ap :ALEPrevious<cr>
-" Configure ESLint to run on JSX files when file is saved
-autocmd BufWritePost *.jsx AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+" Configure Prettier to run on file save.
+autocmd BufWritePost *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 " Set tabs to 2 spaces for JSX files
 filetype plugin on
 autocmd FileType javascript setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+" Configure Python Black formatting.
+autocmd BufWritePre *.py execute ':Black'
 
 "" CTags
 " Configure Vim to find tag files. Vim will search for a .tags file in the
