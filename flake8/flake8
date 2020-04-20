@@ -1,3 +1,6 @@
 [flake8]
-max-line-length = 88
-extend-ignore = E203
+max-line-length = 80
+# line length is intentionally set to 80 here because black uses Bugbear
+# See https://github.com/psf/black/blob/master/README.md#line-length for more details
+select = C,E,F,W,B,B950
+ignore = E203, E501, W503
