@@ -29,6 +29,7 @@ install-requirements:
 	sudo apt -y install tmux
 	sudo apt -y install neovim
 	sudo snap install sublime-text --classic
+	subl --command install_package_control
 	sudo apt -y install fonts-firacode
 	sudo fc-cache -fv
 

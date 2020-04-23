@@ -63,6 +63,7 @@ sudo -H pip install requests
 # Install snaps
 sudo snap install spotify
 sudo snap install sublime-text --classic
+subl --command install_package_control
 
 sudo npm install -g git-standup git-pending
 
