@@ -1,10 +1,21 @@
 {
-    "ignored_packages": ["Vintage"],
-    "close_windows_when_empty": true,
-    "font_face": "Fira Code",
-    "font_size": 11,
-    "hot_exit": false,
-    "indent_guide_options": ["draw_active"],
-    "rulers": [88],
-    "translate_tabs_to_spaces": true
+	"close_windows_when_empty": true,
+	"color_scheme": "Packages/ayu/ayu-mirage.sublime-color-scheme",
+	"font_face": "Fira Code",
+	"font_size": 11,
+	"hot_exit": false,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_active"
+	],
+	"rulers":
+	[
+		88
+	],
+	"theme": "ayu-mirage.sublime-theme",
+	"translate_tabs_to_spaces": true
 }

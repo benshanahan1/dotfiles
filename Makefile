@@ -28,7 +28,9 @@ remove: r-neovim r-tmux r-bashrc r-sublime
 install-requirements:
 	sudo apt -y install tmux
 	sudo apt -y install neovim
-	sudo snap -y install sublime-text --classic
+	sudo snap install sublime-text --classic
+	sudo apt -y install fonts-firacode
+	sudo fc-cache -fv
 
 ###############################################################################
 ## dotfiles
@@ -78,7 +80,9 @@ r-flake8:
 # sublime text 3
 i-sublime:
 	@echo "=== INSTALL sublime text 3 dotfiles ==="
-	ln -sfv "$(REPO)/sublime/Preferences.sublime-settings" "$(HOME)/.config/sublime-text-3/Packages/User/Preferences.sublime-settings"
+	ln -sfv \
+	    "$(REPO)/sublime/Preferences.sublime-settings" \
+	    "$(HOME)/.config/sublime-text-3/Packages/User/Preferences.sublime-settings"
 
 r-sublime:
 	@echo "=== REMOVE sublime text 3 dotfiles ==="
