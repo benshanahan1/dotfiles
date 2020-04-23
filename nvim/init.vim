@@ -21,7 +21,8 @@
 "
 " You must also have Node.js / NPM installed. See:
 "     https://github.com/nodesource/distributions/blob/master/README.md#deb
-" Once you've got NPM installed, install `prettier`: `sudo npm i -g prettier`
+" Once you've got NPM installed, install packages:
+"       npm install -g neovim prettier
 "
 " NOTE: if you use a different path for $VENV_DIR, be sure to update the paths
 "       below accordingly.
