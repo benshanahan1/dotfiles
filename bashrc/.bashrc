@@ -249,6 +249,14 @@ AQI() {
     fi
 }
 
+# Get current weather
+weather() {
+    curl "wttr.in/$1?format=3 "
+}
+alias wttr="weather "
+alias forecast="weather "
+alias temp="weather "
+
 # Empty trash bin.
 GarbageDay() {
     rm -rf ~/.local/share/Trash/*
