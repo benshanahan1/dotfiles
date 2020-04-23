@@ -1,0 +1,24 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"install_prereleases":
+	[
+		"Babel"
+	],
+	"installed_packages":
+	[
+		"A File Icon",
+		"ayu",
+		"Babel",
+		"Babel Snippets",
+		"ESLint",
+		"JsPrettier",
+		"Package Control",
+		"Python 3",
+		"React ES6 Snippets",
+		"SCSS",
+		"sublack"
+	]
+}

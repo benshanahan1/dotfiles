@@ -80,10 +80,12 @@ r-flake8:
 # sublime text 3
 i-sublime:
 	@echo "=== INSTALL sublime text 3 dotfiles ==="
+	mv "$(HOME)/.config/sublime-text-3/Packages/User" "$(HOME)/.config/sublime-text-3/Packages/User.backup"
 	ln -sfv \
-	    "$(REPO)/sublime/Preferences.sublime-settings" \
-	    "$(HOME)/.config/sublime-text-3/Packages/User/Preferences.sublime-settings"
+		"$(REPO)/sublime/Packages/User" \
+		"$(HOME)/.config/sublime-text-3/Packages/User"
 
 r-sublime:
 	@echo "=== REMOVE sublime text 3 dotfiles ==="
-	rm "$(HOME)/.config/sublime-text-3/Packages/User/Preferences.sublime-settings"
+	rm "$(HOME)/.config/sublime-text-3/Packages/User"
+	mv "$(HOME)/.config/sublime-text-3/Packages/User.backup" "$(HOME)/.config/sublime-text-3/Packages/User"
