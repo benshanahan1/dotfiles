@@ -21,13 +21,14 @@ help:
 ## installation targets
 ###############################################################################
 
-install: i-neovim i-tmux i-bashrc
+install: i-neovim i-tmux i-bashrc i-sublime
 
-remove: r-neovim r-tmux r-bashrc
+remove: r-neovim r-tmux r-bashrc r-sublime
 
 install-requirements:
 	sudo apt -y install tmux
 	sudo apt -y install neovim
+	sudo snap -y install sublime-text --classic
 
 ###############################################################################
 ## dotfiles
@@ -73,3 +74,12 @@ i-flake8:
 r-flake8:
 	@echo "=== REMOVE flake8 dotfiles ==="
 	rm "$(HOME)/.config/flake8"
+
+# sublime text 3
+i-sublime:
+	@echo "=== INSTALL sublime text 3 dotfiles ==="
+	ln -sfv "$(REPO)/sublime/Preferences.sublime-settings" "$(HOME)/.config/sublime-text-3/Packages/User/Preferences.sublime-settings"
+
+r-sublime:
+	@echo "=== REMOVE sublime text 3 dotfiles ==="
+	rm "$(HOME)/.config/sublime-text-3/Packages/User/Preferences.sublime-settings"
