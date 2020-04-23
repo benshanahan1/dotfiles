@@ -11,10 +11,10 @@ git clone git@gitlab.com:bshanahan/dotfiles.git
 
 ## software
 
-The `install.sh` bash file automates software installation for a minimal Ubuntu 18.04 installation. This should be run with `sudo`. Please note that this is not required for the dotfiles:
+The `install-software-ubuntu-18.04.sh` bash file automates software installation for a minimal Ubuntu 18.04 installation. This should be run with `sudo`. Please note that this is not required for the dotfiles:
 
 ```bash
-sudo bash install.sh
+sudo bash install-software-ubuntu-18.04.sh
 ```
 
 ## dotfiles
