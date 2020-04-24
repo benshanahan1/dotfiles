@@ -41,8 +41,8 @@ install-requirements:
 i-neovim:
 	@echo "=== INSTALL neovim dotfiles ==="
 	mkdir -p "$(HOME)/.config/nvim"
-	ln -sfv "$(REPO)/nvim/init.vim" "$(HOME)/.config/nvim/init.vim"
-	ln -sfv "$(REPO)/nvim/init.vim" "$(HOME)/.vimrc"
+	ln -sf "$(REPO)/nvim/init.vim" "$(HOME)/.config/nvim/init.vim"
+	ln -sf "$(REPO)/nvim/init.vim" "$(HOME)/.vimrc"
 
 r-neovim:
 	@echo "=== REMOVE neovim dotfiles ==="
@@ -52,8 +52,8 @@ r-neovim:
 # tmux
 i-tmux:
 	@echo "=== INSTALL tmux dotfiles ==="
-	ln -sfv "$(REPO)/tmux/.tmux.conf" "$(HOME)/.tmux.conf"
-	ln -sfv "$(REPO)/tmux/.tmux.conf.local" "$(HOME)/.tmux.conf.local"
+	ln -sf "$(REPO)/tmux/.tmux.conf" "$(HOME)/.tmux.conf"
+	ln -sf "$(REPO)/tmux/.tmux.conf.local" "$(HOME)/.tmux.conf.local"
 
 r-tmux:
 	@echo "=== REMOVE tmux dotfiles ==="
@@ -63,7 +63,7 @@ r-tmux:
 # bashrc
 i-bashrc:
 	@echo "=== INSTALL bashrc dotfiles ==="
-	ln -sfv "$(REPO)/bashrc/.bashrc" "$(HOME)/.bashrc"
+	ln -sf "$(REPO)/bashrc/.bashrc" "$(HOME)/.bashrc"
 
 r-bashrc:
 	@echo "=== REMOVE bashrc dotfiles ==="
@@ -72,7 +72,7 @@ r-bashrc:
 # flake8
 i-flake8:
 	@echo "=== INSTALL flake8 dotfiles ==="
-	ln -sfv "$(REPO)/flake8/flake8" "$(HOME)/.config/flake8"
+	ln -sf "$(REPO)/flake8/flake8" "$(HOME)/.config/flake8"
 
 r-flake8:
 	@echo "=== REMOVE flake8 dotfiles ==="
@@ -82,9 +82,7 @@ r-flake8:
 i-sublime:
 	@echo "=== INSTALL sublime text 3 dotfiles ==="
 	mv "$(HOME)/.config/sublime-text-3/Packages/User" "$(HOME)/.config/sublime-text-3/Packages/User.backup"
-	ln -sfv \
-		"$(REPO)/sublime/Packages/User" \
-		"$(HOME)/.config/sublime-text-3/Packages/User"
+	ln -sf "$(REPO)/sublime/Packages/User" "$(HOME)/.config/sublime-text-3/Packages/User"
 
 r-sublime:
 	@echo "=== REMOVE sublime text 3 dotfiles ==="
