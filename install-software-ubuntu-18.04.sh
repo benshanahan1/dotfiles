@@ -18,6 +18,7 @@ sudo apt install -y \
     ctags \
     curl \
     git \
+    git-flow \
     gnome-tweaks \
     gparted \
     htop \
