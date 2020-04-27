@@ -14,6 +14,7 @@ sudo apt -y update
 sudo apt install -y \
     openssh-server \
     software-properties-common \
+    baobab \
     chromium-browser \
     ctags \
     curl \
