@@ -5,7 +5,7 @@ My Ubuntu installation script and dotfiles.
 **Important:** this repo thinks that it lives at `/home/$(USER)/dotfiles`, so please clone it there:
 
 ```bash
-cd ~
+cd "/home/$USER"
 git clone git@gitlab.com:bshanahan/dotfiles.git
 ```
 
