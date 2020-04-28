@@ -44,7 +44,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'scrooloose/nerdtree'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'w0rp/ale'
@@ -124,18 +123,39 @@ let g:gruvbox_italicize_comments = 1
 colorscheme gruvbox
 
 "" Configure syntax highlighting and code checking
-" Configure Ale with ESLint
+" ALE
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
 let g:ale_lint_on_enter = 0
 nmap <silent> <leader>ae :ALENext<cr>
 nmap <silent> <leader>ap :ALEPrevious<cr>
-" Configure Prettier to run on file save.
+" Prettier
 autocmd BufWritePost *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-" Set tabs to 2 spaces for JSX files
+" JavaScript / TypeScript / JSX / TSX
+" - Set tabs to 2 spaces for Javascript files
 filetype plugin on
 autocmd FileType javascript setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
-" Configure Python Black formatting.
+autocmd FileType typescript.tsx setlocal tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+" - Set syntax highlighting for js, jsx, ts, tsx files to typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.ts,*.js set filetype=typescript.tsx
+" - Set syntax highlighting colors for JSX/TSX files, ugh
+hi link tsxTag GruvboxAqua
+hi link tsxTagName GruvboxPurple
+hi link tsxCloseTag GruvboxAqua
+hi link tsxCloseTagName GruvboxPurple
+hi link tsxCloseString GruvboxOrange
+hi link tsxAttributeBraces GruvboxOrange
+hi link tsxEqual GruvboxOrange
+hi link tsxAttrib GruvboxYellow
+hi tsxAttrib ctermfg=214 cterm=italic guifg=#fabd2f
+hi link tsxTypeBraces GruvboxFg3
+hi link tsxTypes GruvboxBg4
+hi link ReactState GruvboxYellowBold
+hi link ReactProps GruvboxYellowBold
+hi link ReduxKeywords GruvboxAqua
+hi link ReduxHooksKeywords GruvboxAqua
+" Black (Python)
 autocmd BufWritePre *.py execute ':Black'
 
 "" CTags
