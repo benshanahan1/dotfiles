@@ -15,11 +15,15 @@
 		"Babel Snippets",
 		"ESLint",
 		"JsPrettier",
+		"LiveReload",
+		"MarkdownPreview",
 		"Package Control",
 		"Python 3",
 		"React ES6 Snippets",
 		"SCSS",
 		"sublack",
+		"SublimeLinter-flake8",
+		"Sublimerge 3",
 		"TypeScript"
 	]
 }
