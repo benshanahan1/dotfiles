@@ -11,5 +11,5 @@ SHELL=/bin/bash
 SCRIPTS=/home/ben/dotfiles/scripts
 
 # Update system every day at 12pm and write all STDOUT/STDERR to a logfile.
-0 12 * * * "$SCRIPTS"/update-system.sh && /tmp/dotfiles/logs/update-system.log 2>&1
+0 12 * * * "$SCRIPTS"/update-system.sh >> /tmp/dotfiles-cron.log 2>&1
 ```
