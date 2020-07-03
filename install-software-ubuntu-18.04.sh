@@ -33,6 +33,7 @@ sudo apt install -y \
     tmux \
     tree \
     ufw \
+    ncdu \
     virtualenv \
     wget \
     wmctrl \
