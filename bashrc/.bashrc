@@ -125,6 +125,7 @@ alias apt="apt-fast "
 alias calc="gnome-calculator"
 alias new="gnome-terminal"  # open new terminal
 alias resource="source ~/.bashrc"
+alias www="ping 8.8.8.8"
 alias vimrc="vim ~/.vimrc"
 alias bashrc="vim ~/.bashrc"
 # alias cp="rsync -avz"
