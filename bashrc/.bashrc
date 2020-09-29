@@ -152,7 +152,17 @@ alias lsusers="cut -d: -f1 /etc/passwd"
 
 # Virtualenv
 alias mkenv="virtualenv -p python3 env && source env/bin/activate"
-alias activate="source env/bin/activate"
+activate() {
+    if [[ -f env/bin/activate ]]; then
+        source env/bin/activate
+        exit 0
+    fi
+    if [[ -f venv/bin/activate ]]; then
+        source venv/bin/activate
+        exit 0
+    fi
+    echo "Unable to find Python virtualenv."
+}
 
 # Docker
 alias dcps="docker-compose ps "
