@@ -151,17 +151,15 @@ alias dirsize="du -hs ."
 alias lsusers="cut -d: -f1 /etc/passwd"
 
 # Virtualenv
-alias mkenv="virtualenv -p python3 env && source env/bin/activate"
+alias mkenv="virtualenv -p python3 venv && source ./venv/bin/activate"
 activate() {
     if [[ -f env/bin/activate ]]; then
         source env/bin/activate
-        exit 0
-    fi
-    if [[ -f venv/bin/activate ]]; then
+    elif [[ -f venv/bin/activate ]]; then
         source venv/bin/activate
-        exit 0
+    else
+        echo "Cannot find Python virtual environment."
     fi
-    echo "Unable to find Python virtualenv."
 }
 
 # Docker
