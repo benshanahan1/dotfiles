@@ -40,8 +40,8 @@ sudo apt install -y \
     xclip
 
 # Install Node.js and NPM
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt -y install nodejs
+# curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+# sudo apt -y install nodejs
 
 # Install video drivers, if applicable
 sudo ubuntu-drivers autoinstall
