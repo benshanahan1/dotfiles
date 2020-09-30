@@ -83,25 +83,6 @@ fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias sl='ls '
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -113,206 +94,44 @@ if ! shopt -oq posix; then
     fi
 fi
 
-###############################################################################
-## Aliases
-###############################################################################
+# custom aliases and functions
 
-# NOTE: spaces after the command force what follows to expand (if it has an alias)
-alias sudo="sudo "
-alias vim="nvim "
-alias hex="hexyl "
-alias apt="apt-fast "
-alias calc="gnome-calculator"
-alias new="gnome-terminal"  # open new terminal
-alias resource="source ~/.bashrc"
-alias www="ping 8.8.8.8"
-alias vimrc="vim ~/.vimrc"
-alias bashrc="vim ~/.bashrc"
-# alias cp="rsync -avz"
-alias cl="clear"
-alias lear="clear"  # common typo
+if [ -f ~/dotfiles/bashrc/misc.sh ]; then
+    . ~/dotfiles/bashrc/misc.sh
+fi
 
-# Toggle maximum size for current terminal window
-alias maxwin="wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz"
+if [ -f ~/dotfiles/bashrc/docker.sh ]; then
+    . ~/dotfiles/bashrc/docker.sh
+fi
 
-# Add CD aliases for entering parent dirs
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
+if [ -f ~/dotfiles/bashrc/git.sh ]; then
+    . ~/dotfiles/bashrc/git.sh
+fi
 
-# List all open ports
-alias openports='netstat -nape --inet'
+if [ -f ~/dotfiles/bashrc/python.sh ]; then
+    . ~/dotfiles/bashrc/python.sh
+fi
 
-# Get size of current directory recursively
-alias dirsize="du -hs ."
+if [ -f ~/dotfiles/bashrc/security.sh ]; then
+    . ~/dotfiles/bashrc/security.sh
+fi
 
-# List local users
-alias lsusers="cut -d: -f1 /etc/passwd"
+if [ -f ~/dotfiles/bashrc/weather.sh ]; then
+    . ~/dotfiles/bashrc/weather.sh
+fi
 
-# Virtualenv
-alias mkenv="virtualenv -p python3 venv && source ./venv/bin/activate"
-activate() {
-    if [[ -f env/bin/activate ]]; then
-        source env/bin/activate
-    elif [[ -f venv/bin/activate ]]; then
-        source venv/bin/activate
-    else
-        echo "Cannot find Python virtual environment."
-    fi
-}
+if [ -f ~/dotfiles/bashrc/ps1.sh ]; then
+    . ~/dotfiles/bashrc/ps1.sh
+fi
 
-# Docker
-alias dcps="docker-compose ps "
-alias dcup="docker-compose up -d "
-alias dcstop="docker-compose stop "
-alias dcrestart="docker-compose restart "
-alias dcdown="docker-compose down "
-alias dcbuild="docker-compose build "
-
-###############################################################################
-## Git-related aliases and functions.
-###############################################################################
-
-# Get name of current git branch
-ParseGitBranch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-
-# Store username and password for a new repo.
-alias gitstore="git config credential.helper store"
-alias gitcache="git config credential.helper cache"
-
-# Count total number of commits for repo.
-alias countcommits="git log --oneline --all | wc -l"
-
-# Git commands, shorthand.
-alias gga='git add '
-alias ggb='git branch '
-alias ggc='git commit -m '
-alias ggco='git checkout '
-alias ggd='git diff '
-alias ggs='git status '
-alias ggl='git log '
-
-# Open repo remote URL in browser.
-function openrepo {
-    if [ -d .git ]; then
-        url=$(git remote get-url origin)
-        # if repo was cloned with SSH, we need to tweak the URL
-        if [[ $url == git@* ]]; then
-            url=${url/://}  # replace first ':' with '/'
-            url=${url/git@/https://}  # replace 'git@' with 'https://'
-        fi  
-        url=${url%%.git*}  # remove trailing '.git'
-        xdg-open "$url"
-    else
-        echo "Not a git repo."
-    fi
-}
-
-# Git add, commit, and push
-function gitacp() {
-    if [ $# -ne 1 ]; then
-        echo "usage: gitacp [message]"
-        echo "  where [message] is commit message (surrounded by quotes)"
-        echo ""
-        echo -n "please note that gitacp will add *everything* recursively "
-        echo    "from current working directory"
-    else
-        git add .
-        git commit -m "$1"
-        git push
-    fi
-}
-
-###############################################################################
-## Miscellaneous helper functions
-###############################################################################
-
-# Update, upgrade, and autoremove packages
-update() {
-    sudo apt -y update
-    sudo apt -y upgrade
-    sudo apt -y autoremove
-}
-
-# Copy IP address to clipboard.
-#    requires: `xclip` (`sudo apt -y install xclip`)
-getip() {
-    PRIMARY_IP=$(hostname -I)
-    echo -n $PRIMARY_IP | xclip -selection primary
-    echo -n $PRIMARY_IP | xclip -selection clipboard
-    echo "Copied IP to clipboard: $PRIMARY_IP"
-}
-
-# Get Air Quality Index
-#    requires `jq` (`sudo apt -y install jq`)
-#    uses on https://docs.airnowapi.org/ for AQI data
-AQI() {
-    if [ "$#" -ne 1 ]; then
-        echo "usage: AQI [zipcode]"
-        echo "    returns forecasted air quality index"
-    else
-        echo "Air quality forecast for $1:"
-        curl -s -H "Accept: application/json" -H "Content-Type: application/json" -X GET "http://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode=$1&api_key=106C1BD4-D8A2-4129-A160-ADBB16DAD15D" | jq ".[0]"
-    fi
-}
-
-# Get current weather
-weather() {
-    curl "wttr.in/$1?format=3 "
-}
-alias wttr="weather "
-alias forecast="weather "
-alias temp="weather "
-
-# Empty trash bin.
-GarbageDay() {
-    rm -rf ~/.local/share/Trash/*
-}
-
-# Set title of current terminal window.
-SetTitle() {
-    if [[ -z "$ORIG" ]]; then
-        ORIG=$PS1
-    fi
-    TITLE="\[\e]2;$*\a\]"
-    PS1=${ORIG}${TITLE}
-}
-alias rename='SetTitle '
-
-# Generate a string of random digits and copy it to the system clipboard.
-mkpass() {
-    if [[ $# -ne 1 ]]; then
-        echo "Usage: mkpass <length>"
-        echo "The generated string is copied to the system clipboard."
-    else
-        PSWD=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c "$1")
-        echo -n $PSWD | xclip -selection primary
-        echo -n $PSWD | xclip -selection clipboard
-        echo "$PSWD"
-    fi
-}
-
-###############################################################################
-## Recurring (run each time a terminal is opened)
-###############################################################################
-
-# Add warpdrive
-#    Warpdrive allows jumping to tagged directories quickly
-#    requires: `cd && git clone https://github.com/JoeriHermans/warpdrive`
-source ~/warpdrive/src/.warpdrive
-
-# Bash prompt
-# Colorful
-#export PS1="\n\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;209m\]\u\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] @ \[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;140m\]\h\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \t \[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;245m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\e[0;34m\]\$(ParseGitBranch)\[\033[38;5;15m\]\n\\$ \[$(tput sgr0)\]"
-# Minimal
-export PS1="\[\e[37m\]\u@\h \w \[\e[1;31m\]$\[\e[0m\] "
+# Warpdrive allows jumping to tagged directories quickly.
+# Install: `cd && git clone https://github.com/JoeriHermans/warpdrive`
+if [ -f ~/warpdrive/src/.warpdrive ]; then
+    . ~/warpdrive/src/.warpdrive
+fi
 
 # Source .bashrc.local file (at ~/.bashrc.local). This is useful if you want to
 # have custom aliases or functions that are not shared between computers.
-BASHRC_LOCAL=~/.bashrc.local
-if [ -f "$BASHRC_LOCAL" ]; then
-    source "$BASHRC_LOCAL"
+if [ -f ~/.bashrc.local ]; then
+    . ~/.bashrc.local
 fi
