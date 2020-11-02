@@ -9,9 +9,9 @@
 ORIGIN_DIR=$(pwd)
 cd ~
 
-# Update apt and install packages
-sudo apt -y update
-sudo apt install -y \
+# Update and install packages
+sudo apt-get -y update
+sudo apt-get install -y \
     openssh-server \
     software-properties-common \
     baobab \
@@ -41,25 +41,25 @@ sudo apt install -y \
 
 # Install Node.js and NPM
 # curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-# sudo apt -y install nodejs
+# sudo apt-get -y install nodejs
 
 # Install video drivers, if applicable
 sudo ubuntu-drivers autoinstall
 
 # Uninstall unused stuff
-sudo apt -y purge --auto-remove ghostscript
+sudo apt-get -y purge --auto-remove ghostscript
 
 # Install fonts
-sudo apt -y install fonts-inconsolata fonts-firacode
+sudo apt-get -y install fonts-inconsolata fonts-firacode
 sudo fc-cache -fv  # update font cache
 
 # Install neovim
 sudo add-apt-repository -y -u ppa:neovim-ppa/stable
-sudo apt -y install neovim
+sudo apt-get -y install neovim
 
 # Install important Python packages
-sudo apt upgrade -y python-setuptools
-sudo apt install -y python-pip python-wheel
+sudo apt-get upgrade -y python-setuptools
+sudo apt-get install -y python-pip python-wheel
 sudo pip install --upgrade pip
 sudo -H pip install requests
 
@@ -85,7 +85,7 @@ mkdir -p ~/.config ~/.config/nvim
 
 # Install neofetch (quick computer specs, https://github.com/dylanaraps/neofetch)
 sudo add-apt-repository -y -u ppa:dawidd0811/neofetch
-sudo apt install neofetch
+sudo apt-get -y install neofetch
 
 # Install hexyl (hexdump clone with pretty colors, https://github.com/sharkdp/hexyl)
 export HEXYL_VERSION=0.5.1
@@ -96,7 +96,7 @@ rm $DEB_FILE
 
 # Install apt-fast (download packages in parallel, https://github.com/ilikenwf/apt-fast)
 sudo add-apt-repository -y -u ppa:apt-fast/stable
-sudo apt -y install apt-fast
+sudo apt-get -y install apt-fast
 
 # Install `fff` (fucking fast file-manager, https://github.com/dylanaraps/fff)
 # git clone https://github.com/dylanaraps/fff ~/fff
