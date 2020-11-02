@@ -32,14 +32,8 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-# List all open ports
-alias openports='netstat -nape --inet'
-
 # Get size of current directory recursively
 alias dirsize="du -hs ."
-
-# List local users
-alias lsusers="cut -d: -f1 /etc/passwd"
 
 # Update, upgrade, and autoremove packages
 update() {

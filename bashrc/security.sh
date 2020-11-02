@@ -11,5 +11,12 @@ mkpass() {
     fi
 }
 
+# Check if a port is open on a remote system using netcat.
 # usage: port 192.168.1.1 22
 alias port="nc -zv "
+
+# List all open/bound ports on the current system.
+alias openports='netstat -nape --inet'
+
+# List all users present in the /etc/passwd file.
+alias lsusers="cut -d: -f1 /etc/passwd"
