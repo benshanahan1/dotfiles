@@ -10,3 +10,6 @@ mkpass() {
         echo "$PSWD"
     fi
 }
+
+# usage: port 192.168.1.1 22
+alias port="nc -zv "
