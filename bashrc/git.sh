@@ -18,6 +18,8 @@ alias ggco='git checkout '
 alias ggd='git diff '
 alias ggs='git status '
 alias ggl='git log '
+alias gr='git remote '
+alias grv='git remote -v '
 
 # Open repo remote URL in browser.
 function openrepo {
