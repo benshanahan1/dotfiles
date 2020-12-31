@@ -21,9 +21,9 @@ help:
 ## installation targets
 ###############################################################################
 
-install: i-neovim i-tmux i-bashrc i-sublime
+install: i-neovim i-tmux i-bashrc i-flake8
 
-remove: r-neovim r-tmux r-bashrc r-sublime
+remove: r-neovim r-tmux r-bashrc i-flake8
 
 install-requirements:
 	sudo apt -y install tmux
@@ -77,14 +77,3 @@ i-flake8:
 r-flake8:
 	@echo "=== REMOVE flake8 dotfiles ==="
 	rm "$(HOME)/.config/flake8"
-
-# sublime text 3
-i-sublime:
-	@echo "=== INSTALL sublime text 3 dotfiles ==="
-	mv "$(HOME)/.config/sublime-text-3/Packages/User" "$(HOME)/.config/sublime-text-3/Packages/User.backup"
-	ln -sf "$(REPO)/sublime/Packages/User" "$(HOME)/.config/sublime-text-3/Packages/User"
-
-r-sublime:
-	@echo "=== REMOVE sublime text 3 dotfiles ==="
-	rm "$(HOME)/.config/sublime-text-3/Packages/User"
-	mv "$(HOME)/.config/sublime-text-3/Packages/User.backup" "$(HOME)/.config/sublime-text-3/Packages/User"
